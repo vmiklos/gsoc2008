@@ -1,0 +1,29 @@
+Random notes from today's discussion with Dscho:
+
+* A situation where you have mulitple merge bases:
+
+----
+A - B - C - D - G - I \
+              X
+      \ E - F - H - J - K
+----
+
+In K, the two bases are D and F.
+
+* Parameters for a backend:
+
+git-merge calls the backend with "<base1> [<base2>...] -- <commit1> <commit2> [<commit3>...]"
+
+* Detailed suggestions about the builtification of git-merge.sh:
+
+I got a nice annotated version of git-merge.sh, which is available
+http://repo.or.cz/w/git/dscho.git?a=blob;f=git-merge.annotated;h=e8d3d342b368b5600d09f0fc7324e60e0456043b;hb=refs/heads/my-next[here].
+
+* A few issues which will not be covered by the first version:
+
+- git-fmt-merge-msg can read data from stdin only ATM, that could be
+  fixed up later to avoid an unnecessary fork()
+
+- using git-show-branch --merge-base via the run_command() API is not so
+  optimal, I could modify it to use it without a fork() via using
+  add_decoration() and lookup_decoration().
