@@ -1,0 +1,21 @@
+* We discussed that I will write additional tests when it's necessary,
+  so I started builtin-merge today.
+
+* I did simple infrastructure changes, like moving git-merge.sh to
+  contrib, changes in Makefile and git.c.
+
+* Some research about the parse option api, and I have a basically
+  working option parser. One issue is how to tell the api to set a
+  variable to 0 on -n,--no-foo and to 1 on --foo. So -n is a FIXME for
+  now. Also I current do nothing with the given merge strategy, will do
+  it when I write the config parser.
+
+* I did some trivial changes to fast-import to allow cmd_merge in
+  builtin-merge.c and documented git-read-tree's -v option.
+
+* git-merge.c's parse_arguments(), dropsave(), savestate() (after
+  reading some run-command api docs) should be ~ ok.
+
+* I probably need reset_index_file() from builtin-reset.c but need to
+  discuss first how can I use it, maybe move it to some more generic
+  file, etc.
