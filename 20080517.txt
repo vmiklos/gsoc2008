@@ -1,0 +1,20 @@
+* I set up a pre-commit hook: enabled the default one and improved it a
+  bit to force myself to use spaces after if, like deny
+
+----
+if(0);
+----
+
+and allow
+
+----
+if (0);
+----
+
+* Given that I need reset_index_file from builtin-reset, I moved it to a
+  new reset.c file, so now it's part of libgit.
+
+* Added support for running hooks, based on builtin-commit.
+
+* Implemented new functions: `restorestate()`, `finish_up_to_date()`,
+  `squash_message()`, `finish()`.
