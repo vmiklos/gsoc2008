@@ -1,0 +1,44 @@
+* Ouch, I actually stopped writing this diary while it would be useful
+  to do so...
+
+* Today I finished the very first implementation of builtin-merge. This
+  means that it's not well-tested, it may or may not work, but basically
+  no major code chunk should be missing.
+
+* The testsuite says currently:
+
+----
+$ cat good
+t3030-merge-recursive.sh
+t3402-rebase-merge.sh
+t3502-cherry-pick-merge.sh
+t5402-post-merge-hook.sh
+t5515-fetch-merge-logic.sh
+t6010-merge-base.sh
+t6020-merge-df.sh
+t6022-merge-rename.sh
+t6023-merge-file.sh
+t6023-merge-rename-nocruft.sh
+t6025-merge-symlinks.sh
+t6026-merge-attr.sh
+t6027-merge-binary.sh
+t6031-merge-recursive.sh
+t6032-merge-large-rename.sh
+t6200-fmt-merge-msg.sh
+t7610-mergetool.sh
+t9114-git-svn-dcommit-merge.sh
+t$ cat good|wc -l
+18
+$ cat bad
+t6021-merge-criss-cross.sh
+t6024-recursive-merge.sh
+t6028-merge-up-to-date.sh
+t6029-merge-subtree.sh
+t7600-merge.sh
+$ cat bad|wc -l
+5
+----
+
+* Originally `t5402-post-merge-hook.sh` and `t6020-merge-df.sh` failed
+  as well, but I already figured out what was the problem there, and
+  they now pass.
