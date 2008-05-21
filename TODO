@@ -1,0 +1,7 @@
+= General
+
+* Make all tests pass.
+
+* Get rid of all TODO-s in the code.
+
+* Avoid fork() whenever possible.
