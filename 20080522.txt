@@ -1,3 +1,5 @@
+== bisect
+
 Today I did my first bisect! After I did minor changes based on Dscho's
 comments, I noticed that now only 16 tests are passing, compared to
 yesterday's 18.
@@ -31,3 +33,25 @@ e227f8a939d003555f3dfa7f73757b6b7ec8835c.)
 Oh, I just rebased it already, so the commits are not in the public
 repo. But it was useful to learn now to use git bisect, I never needed
 it so far.
+
+== Debugging pointers
+
+This might be something trivial but it took some time for me to figure
+out so I write it down here: If you want to print out a pointer address,
+then one easy way is:
+
+----
+printf("#%x\n", (unsigned)ptr);
+----
+
+Not too much info, but you can see if the pointer is NULL, see if two
+pointers refer to the same memory address, etc. Just in case valgrind
+would not be helpful in some special case.
+
+== get_merge_bases()'s cleanup parameter
+
+I spent about an hour to debug this, and here is the result: you *must*
+call get_merge_bases() with the cleanup parameter enabled if you want to
+call it multiple times and you want to get results the second time as
+well. In other words, typically you should not copy&paste code from
+builtin-merge-base, where it's called only once ;-)

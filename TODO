@@ -4,4 +4,7 @@
 
 * Get rid of all TODO-s in the code.
 
-* Avoid fork() whenever possible.
+* Avoid exec() whenever possible.
+
+* Memory leaks. A simple merge leaks about 5k of memory here, at the
+  moment. I don't want any memory leak in a simple git-merge run.
