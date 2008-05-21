@@ -1,0 +1,33 @@
+Today I did my first bisect! After I did minor changes based on Dscho's
+comments, I noticed that now only 16 tests are passing, compared to
+yesterday's 18.
+
+Relevant part of my history:
+
+----
+  731  git bisect start
+  732  git log
+  733  git bisect good cc50c8dce53c90e73e59d886ac7d1e4060a55641
+  734  git bisect bad HEAD
+  735  make
+  736  ./test-builtin-merge.sh
+  737  git bisect good
+  738  make
+  739  ./test-builtin-merge.sh
+  740  git bisect good
+  741  make
+  742  ./test-builtin-merge.sh
+  743  git bisect good
+----
+
+It turns out the bad commit was c673564678bda4a78da0b8686e64f3431ef8d144.
+
+Somehow t3402-rebase-merge and t6027-merge-binary passes after reverting
+that commit.
+
+And yes, a bit later I found the reason. (Fixed in
+e227f8a939d003555f3dfa7f73757b6b7ec8835c.)
+
+Oh, I just rebased it already, so the commits are not in the public
+repo. But it was useful to learn now to use git bisect, I never needed
+it so far.
