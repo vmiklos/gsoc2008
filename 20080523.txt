@@ -7,3 +7,39 @@ Now the only failing test is t7600-merge.sh: its 14th, 15th, 16th and
 After a quick&dirty implementation of -n, only the last one fails.
 
 And that was only a whitespace issue, now all tests pass. A milestone!
+
+I also got an idea: a rebase history.
+
+You have older commits after a rebase in your reflog but that's local.
+If somebody steals my notebook, I loose them. And I plan to rebase (-i)
+quite frequently. So here is my plan: save the old heads before a rebase
+in a dedicated branch.
+
+(The current ree of HEAD is 532da334ab7d90c5feb69b7a91f48d4962f8d984.)
+
+----
+$ echo "First working version" |git commit-tree 532da334ab7d90c5feb69b7a91f48d4962f8d984 -p HEAD
+fb24b046d61cd960f1186b045d76934d1656c5e7
+$ git checkout -b rebase-history fb24b046d61cd960f1186b045d76934d1656c5e7
+$ git checkout builtin-merge
+----
+
+and now I can rebase without hiding any history from Dscho.
+
+Before a next rebase, I would do something like (untested):
+
+----
+$ echo "Before next rebase" | git commit-tree current_tree -p HEAD -p fb24b046d61cd960f1186b045d76934d1656c5e7
+some_commit
+$ git update-ref rebase-history come_commit
+----
+
+it will look like a merge but nobody will ever imagine what kind of
+merge strategy I used! ;-)
+
+Ok, seriously:
+
+* I think it's really cool that Git allows me to do so.
+
+* Maybe it would be interesting for others as well, maybe even it would
+  worth writing a howto about this and send is as PATCH/RFC to the list.
