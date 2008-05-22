@@ -1,4 +1,4 @@
-= General
+== General
 
 * option_parse_strategy() need to copy the util flags as well.
 
@@ -10,3 +10,9 @@
 
 * Memory leaks. A simple merge leaks about 5k of memory here, at the
   moment. I don't want any memory leak in a simple git-merge run.
+
+== Unrelated to C porting
+
+Support for custom merge strategies, so that in case one wants to add a
+new one, he/she does not need to patch builtin-merge. Need to discuss
+(probably on the list) how to specify flags.
