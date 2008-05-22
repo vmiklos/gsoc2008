@@ -1,5 +1,7 @@
 = General
 
+* option_parse_strategy() need to copy the util flags as well.
+
 * Make all tests pass.
 
 * Get rid of all TODO-s in the code.
