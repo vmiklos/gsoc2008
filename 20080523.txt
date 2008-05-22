@@ -1,0 +1,9 @@
+As suggested by Dscho, I implemented path_list_append_strategy() which
+fixed t6028-merge-up-to-date.sh.
+
+Now the only failing test is t7600-merge.sh: its 14th, 15th, 16th and
+22th testcase fails.
+
+After a quick&dirty implementation of -n, only the last one fails.
+
+And that was only a whitespace issue, now all tests pass. A milestone!
