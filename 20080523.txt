@@ -17,21 +17,27 @@ in a dedicated branch.
 
 (The current ree of HEAD is 532da334ab7d90c5feb69b7a91f48d4962f8d984.)
 
+The first time it's like this:
+
 ----
-$ echo "First working version" |git commit-tree 532da334ab7d90c5feb69b7a91f48d4962f8d984 -p HEAD
-fb24b046d61cd960f1186b045d76934d1656c5e7
-$ git checkout -b rebase-history fb24b046d61cd960f1186b045d76934d1656c5e7
+$ echo "Rebasing to Junio's master, excludes 4 documentation fixes." \
+	| git commit-tree HEAD^{tree} -p HEAD
+3114b6d7eb96b9c35eab9b0dc7f50af954ae96e0
+$ git checkout -b rebase-history 3114b6d7eb96b9c35eab9b0dc7f50af954ae96e0
 $ git checkout builtin-merge
+$ git rebase -i junio/master # and here I really delete those 4 bogus commits
 ----
 
 and now I can rebase without hiding any history from Dscho.
 
-Before a next rebase, I would do something like (untested):
+Next time it's almost the same but I do a merge:
 
 ----
-$ echo "Before next rebase" | git commit-tree current_tree -p HEAD -p fb24b046d61cd960f1186b045d76934d1656c5e7
-some_commit
-$ git update-ref rebase-history come_commit
+$ echo "Moving commits not modifying builtin-merge.c to the start of the series." \
+	| git commit-tree HEAD^{tree} -p refs/heads/rebase-history -p HEAD
+53840b3f0be85e75120f5774d068fd74a5446ae5
+$ git update-ref refs/heads/rebase-history 53840b3f0be85e75120f5774d068fd74a5446ae5
+$ git rebase -i junio/master # and here I squash bugfixes
 ----
 
 it will look like a merge but nobody will ever imagine what kind of
