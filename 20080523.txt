@@ -15,8 +15,6 @@ If somebody steals my notebook, I loose them. And I plan to rebase (-i)
 quite frequently. So here is my plan: save the old heads before a rebase
 in a dedicated branch.
 
-(The current ree of HEAD is 532da334ab7d90c5feb69b7a91f48d4962f8d984.)
-
 The first time it's like this:
 
 ----
