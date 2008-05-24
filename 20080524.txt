@@ -6,3 +6,40 @@ $ git format-patch -M --thread --cover-letter -n junio/master..
 
 Just in case I would forget parts of them again, like now I forgot
 (fortunately before send-email) -n for the first time.
+
+And two other helper scripts:
+
+----
+$ cat test-builtin-merge.sh
+#!/bin/sh
+
+cd t
+good=()
+bad=()
+for i in *merge*
+do
+        sh $i
+        if [ $? = 0 ]; then
+                good=(${good[@]} $i)
+        else
+                bad=(${bad[@]} $i)
+        fi
+done
+
+echo good: ${#good[@]}
+echo ${good[@]}
+echo bad: ${#bad[@]}
+echo ${bad[@]}
+----
+
+----
+$ cat rebase-builtin-merge.sh
+#!/bin/sh -e
+
+[ -n "$*" ]
+
+git rebase $*
+git update-ref refs/heads/rebase-history \
+        $(echo "Rebased on $(date +%Y-%m-%d) with 'git rebase $*'" | \
+        git commit-tree HEAD^{tree} -p HEAD -p rebase-history)
+----
