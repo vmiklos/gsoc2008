@@ -1,0 +1,8 @@
+The format-patch options I use to send out a series of patches:
+
+----
+$ git format-patch -M --thread --cover-letter -n junio/master..
+----
+
+Just in case I would forget parts of them again, like now I forgot
+(fortunately before send-email) -n for the first time.
