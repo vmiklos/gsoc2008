@@ -1,6 +1,6 @@
 == General
 
-* Avoid exec() whenever possible.
+* Avoid exec() in run_show_branch().
 
 == Unrelated to C porting
 
