@@ -1,0 +1,31 @@
+Long time no diary..
+
+I updated the rebase script:
+
+----
+$ cat rebase-builtin-merge.sh
+#!/bin/sh -e
+
+[ -n "$*" ]
+
+old_head=$(git rev-parse HEAD)
+git rebase $*
+git update-ref refs/heads/rebase-history \
+        $(echo "Rebased with 'git rebase $*'" | \
+        git commit-tree HEAD^{tree} -p rebase-history -p $old_head -p HEAD)
+----
+
+this is good because in some situations not all the old commit was
+referenced in the rebase-history branch.
+
+Something like this:
+
+* rebase with the script
+
+* create a new commit
+
+* rebase -i with the script and edit the last commit
+
+Then the old version of the last commit will be referenced in the reflog
+(for some time..) but not in the rebase-history branch. The new version
+avoids this.
