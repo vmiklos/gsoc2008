@@ -1,0 +1,5 @@
+Changes since the previous series I sent out to the list:
+
+- get_octopus_merge_bases() now always does a cleanup
+
+- added a new test to make sure git-merge handles more than 25 refs
