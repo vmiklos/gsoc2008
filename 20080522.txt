@@ -41,7 +41,7 @@ out so I write it down here: If you want to print out a pointer address,
 then one easy way is:
 
 ----
-printf("#%x\n", (unsigned)ptr);
+printf("%#x\n", (unsigned)ptr);
 ----
 
 Not too much info, but you can see if the pointer is NULL, see if two
