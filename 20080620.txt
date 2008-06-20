@@ -1,0 +1,19 @@
+I just realised I haven't documented what compiler flags do I use when
+debugging git.
+
+Actually `config.mak.autogen` is in `.gitignore`, so I haven't realized a simple
+
+----
+$ git clean -x -d -f
+----
+
+will remove these.
+
+So here is what I have:
+
+----
+CC = ccache gcc
+CFLAGS = -g -O2 -Wall -Werror -fno-inline
+----
+
+`-fno-inline` is a must-have if you want to debug inline functions. ;-)
