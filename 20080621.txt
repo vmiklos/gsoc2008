@@ -1,5 +1,8 @@
 Changelog:
 
 - added a testcase for filter_independent()
-- fixed up filter_independent() as pointed out by Junio
+- fixed up filter_independent() as pointed out by Junio (but not really
+  optimal, dropped)
 - port 037e98f20241bf013cd007b0924936a29c3cacfa to builtin-merge.c
+- dropped filter_independent() and replaced it with reduce_heads() by
+  Junio
