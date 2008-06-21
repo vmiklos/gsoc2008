@@ -1,0 +1,5 @@
+Changelog:
+
+- added a testcase for filter_independent()
+- fixed up filter_independent() as pointed out by Junio
+- port 037e98f20241bf013cd007b0924936a29c3cacfa to builtin-merge.c
