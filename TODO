@@ -1,6 +1,12 @@
 == General
 
-* Avoid exec() in run_show_branch().
+Make more merge-related scripts a builtin:
+
+* -stupid
+
+* -resolve
+
+* -octopus
 
 == Unrelated to C porting
 
