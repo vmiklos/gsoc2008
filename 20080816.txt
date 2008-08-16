@@ -1,0 +1,5 @@
+A cmdline to list all the changes which are merged to git.git during the GSoC:
+
+----
+git log --since=2008-05-26 --until=2008-08-18 --author=vmiklos --all
+----
