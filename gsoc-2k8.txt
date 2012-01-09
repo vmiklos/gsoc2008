@@ -1,0 +1,105 @@
+= Application for Google Summer of Code 2008
+
+== Title/Summary
+
+Make git-merge Builtin
+
+== Organization
+
+Git Development Community
+
+== Abstract
+
+It generally has been found that the C version of a tool is more
+portable and easier to maintain across systems, not to mention faster.
+
+A lot of scripts have been converted already, but "merge" is the big remaining chunk.
+
+I want to replace git-merge with C versions.
+
+== Detailed Description
+
+=== Project Goals
+
+The goal would be to rewrite git-merge, so that it would be more portable and easier to maintain.
+
+Measuring the success of failure of the project would be (I think)
+fairly easy:
+
+I don't know if additional tests are required before touching git-merge, if yes then I would write them first. Then the success would be if the git-merge.sh shell-script would be a builtin and all the tests would pass as well. Additionally the code would be merged to git.git as well.
+
+Failure would be: the code not merged, or even git-merge would not be rewritten.
+
+Description in more detail:
+
+1) I should learn a bit more about git merge, at the moment I have no idea for example what git-merge-stupid does, and internally I don't
+know how the git-merge works.
+
+2) Once I understand how the current code works, I want to see if I need to write additional tests, to help testing when I rewrite code in C.
+
+3) I need to learn the git C API, and I need to understand the internal structures git uses.
+
+4) I need to rewrite git-merge itself in C. All tests should pass, then I should ask the mentor's opinion if the code is basically OK, so that I can continue with the strategies.
+
+5) Optionally, if I have time, I would convert each strategy which is not yet a builtin: If I count correctly, then these are:
+
+git-merge-octopus
+git-merge-one-file
+git-merge-resolve
+git-merge-stupid
+
+Basically this is what I would plan.
+
+=== Interfaces
+
+I think I'll have to use the git API, and maybe I'll have to improve it, I don't know too much about this yet.
+
+The parts what I would like to change are: git-merge-octopus.sh,
+git-merge-resolve.sh, git-merge.sh, git-merge-one-file.sh and
+git-merge-stupid.sh. But just git-merge.sh, first.
+
+=== About Me
+
+A have a page with links to patches I contributed to other FOSS
+projects:
+
+http://vmiklos.hu/portfolio/
+
+Mostly minor code and/or documentation fixes. I contributed a few more
+complex patches to the pacman package manager, the bitlbee IM gateway,
+MPlayer, and tailor.
+
+I'm generally a bash/C/python guy. I know some perl/Java/PHP as well. I
+have used CVS/SVN. I used darcs for my projects for a long time and I
+use git for my projects for about a half year. These are relatively
+small projects, at last I think the git one is bigger. I used email
+and/or IRC for communication when I contributed.
+
+About Git experience: I started to use git for about half year ago and
+(as a user) I think I know a lot about it, as I use to read the mailing
+list and I'm hanging around on #git, so that I can learn from other
+people who know Git better than me.
+
+I contributed some trivial patches and some documentation improvements,
+but I'm not familiar with the internal C API.
+
+Here is a list of patches I contributed:
+
+http://git.kernel.org/?p=git%2Fgit.git&a=search&s=vmiklos
+
+=== Link to Further Information
+
+http://git.or.cz/gitwiki/SoC2008Ideas#head-c69d9395d7b1c5fc6f9cc13f0ce9839e910108cb
+
+== Additional resources
+
+- http://vmiklos.hu/gitweb/?p=gsoc2008.git;a=summary[gitweb]
+- link:Miklos_Vajna.tar.gz[patches tarball]
+- link:gsoc-2k8.txt[application source]
+
+== References
+
+- http://article.gmane.org/gmane.comp.version-control.git/88784[GSoC
+  podcast 18: Git]
+- http://google-opensource.blogspot.com/2008/08/git-and-google-summer-of-code.html[Git
+  and Google Summer of Code]
