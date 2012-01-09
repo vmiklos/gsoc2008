@@ -93,8 +93,8 @@ http://git.or.cz/gitwiki/SoC2008Ideas#head-c69d9395d7b1c5fc6f9cc13f0ce9839e91010
 
 == Additional resources
 
-- http://vmiklos.hu/gitweb/?p=gsoc2008.git;a=summary[gitweb]
-- link:Miklos_Vajna.tar.gz[patches tarball]
+- https://github.com/vmiklos/gsoc2008[gitweb]
+- https://github.com/vmiklos/gsoc2008/downloads[patches tarball]
 - link:gsoc-2k8.txt[application source]
 
 == References
