@@ -100,6 +100,6 @@ http://git.or.cz/gitwiki/SoC2008Ideas#head-c69d9395d7b1c5fc6f9cc13f0ce9839e91010
 == References
 
 - http://article.gmane.org/gmane.comp.version-control.git/88784[GSoC
-  podcast 18: Git]
+  podcast 18: Git] (http://code.google.com/p/google-developer-podcast/downloads/detail?name=gsocpodcast018.ogg&can=1&q=code[ogg])
 - http://google-opensource.blogspot.com/2008/08/git-and-google-summer-of-code.html[Git
   and Google Summer of Code]
