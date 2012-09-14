@@ -13,7 +13,7 @@ So here is what I have:
 
 ----
 CC = ccache gcc
-CFLAGS = -g -O2 -Wall -Werror -fno-inline
+CFLAGS = -g -O2 -Wall -Werror -fno-inline -Wdeclaration-after-statement
 ----
 
 `-fno-inline` is a must-have if you want to debug inline functions. ;-)
